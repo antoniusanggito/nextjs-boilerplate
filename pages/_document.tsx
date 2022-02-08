@@ -4,17 +4,17 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document'
-import { extractCritical } from '@emotion/server'
+} from 'next/document';
+import { extractCritical } from '@emotion/server';
 
-const APP_NAME = 'Frontend Boilerplate PWA'
-const APP_DESCRIPTION = 'This is a Frontend App Boilerplate using Typescript'
+const APP_NAME = 'Frontend Boilerplate PWA';
+const APP_DESCRIPTION = 'This is a Frontend App Boilerplate using Typescript';
 
 export default class extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const critical = extractCritical(initialProps.html)
-    initialProps.html = critical.html
+    const initialProps = await Document.getInitialProps(ctx);
+    const critical = extractCritical(initialProps.html);
+    initialProps.html = critical.html;
     initialProps.styles = (
       <>
         {initialProps.styles}
@@ -23,9 +23,9 @@ export default class extends Document {
           dangerouslySetInnerHTML={{ __html: critical.css }}
         />
       </>
-    )
+    );
 
-    return initialProps
+    return initialProps;
   }
 
   render() {
@@ -57,6 +57,6 @@ export default class extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
