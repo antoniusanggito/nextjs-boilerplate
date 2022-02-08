@@ -5,13 +5,27 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document'
+import { extractCritical } from '@emotion/server'
 
 const APP_NAME = 'Frontend Boilerplate PWA'
 const APP_DESCRIPTION = 'This is a Frontend App Boilerplate using Typescript'
 
 export default class extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    return await Document.getInitialProps(ctx)
+    const initialProps = await Document.getInitialProps(ctx)
+    const critical = extractCritical(initialProps.html)
+    initialProps.html = critical.html
+    initialProps.styles = (
+      <>
+        {initialProps.styles}
+        <style
+          data-emotion-css={critical.ids.join(' ')}
+          dangerouslySetInnerHTML={{ __html: critical.css }}
+        />
+      </>
+    )
+
+    return initialProps
   }
 
   render() {
@@ -36,7 +50,7 @@ export default class extends Document {
             href="/icon-192x192.png"
           />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="shortcut icon" type="image/png" href="/icon-192x192.png" />
         </Head>
         <body>
           <Main />
