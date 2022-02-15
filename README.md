@@ -1,6 +1,6 @@
 # Next.js Boilerplate Repo
 
-Bisa langsung `npm install` terus `npm run dev` pake versi npm terbaru.
+Pake versi node terbaru (v16), bisa langsung `npm install`, lalu untuk development `npm run dev`.
 
 Stack: Next.js (React framework), Typescript (Javascript++), Twin.macro (Tailwind++ untuk styling)
 
@@ -8,7 +8,7 @@ Yang utama isinya folder `pages` sama `components` aja.
 
 TODO:
 
-- [ ] Tes deploy PWA
+- [x] Tes deploy PWA: https://nextjs-boilerplate-liard.vercel.app/
 - [ ] Tes request API
 - [ ] Setup global styling
-- [ ] Fix performance lighthouse masih 70
+- [x] Fix performance lighthouse masih 70
